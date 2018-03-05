@@ -110,9 +110,15 @@ private extension InfiniteCollectionView {
     }
     func correctedIndex(_ indexToCorrect: Int) -> Int {
         guard let numberOfItems = infiniteDataSource?.number(ofItems: self) else { return 0 }
+        
         if numberOfItems > indexToCorrect && indexToCorrect >= 0 {
             return indexToCorrect
         }
+        
+        if numberOfItems > 0 {
+            return 0
+        }
+        
         let countInIndex = Float(indexToCorrect) / Float(numberOfItems)
         let flooredValue = Int(floor(countInIndex))
         let offset = numberOfItems * flooredValue

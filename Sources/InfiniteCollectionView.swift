@@ -115,7 +115,7 @@ private extension InfiniteCollectionView {
             return indexToCorrect
         }
         
-        if numberOfItems > 0 {
+        if numberOfItems == 0 {
             return 0
         }
         
